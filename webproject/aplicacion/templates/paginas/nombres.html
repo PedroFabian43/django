@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de nombres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for persona in listapersonas%}
+                    <tr>
+                        <td>{{persona.nombre}}</td>
+                        <td>{{persona.edad}} </td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    {% for persona in listapersonas%}
+        <h4> Nombre: {{persona.nombre}}, Edad: {{persona.edad}} </h4>
+    {% endfor %}
+    <hr/>
+    {% for name in listanombres %}
+        <h2> {{name}} </h2>
+    {% endfor %}
+</body>
+</html>

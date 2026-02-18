@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "{% static 'css/mascota.css' %}">
+</head>
+<body>
+    <h1>Lista de Mascotas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for mascota in listamascotas%}
+                    <tr>
+                        <td>{{mascota.nombre}}</td>
+                        <td>{{mascota.raza}} </td>
+                        <td>{{mascota.edad}} </td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

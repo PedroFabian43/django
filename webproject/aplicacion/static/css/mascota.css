@@ -1,0 +1,17 @@
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: linear-gradient(to left, #9db9d5, #e0e0e0);
+}
+th, td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+body {
+    text-align: center;
+    
+}

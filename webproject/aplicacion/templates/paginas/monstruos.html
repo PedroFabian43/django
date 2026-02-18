@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+    href = "{% static 'css/monstruo.css' %}">
+</head>
+<body>
+    <h1>¡¡¡Reportes de ataques recientes!!!</h1><br/>
+    <h2><b>Personas reportan dolor y sensaciones de mordiscos en sus tobillos. <br/> 
+        Por suerte el culpable no huyó muy lejos antes de que las autoridades le encontraran.<br/>
+        Aqui hay una foto del culpable:
+    </b></h2>
+    <img src="{% static 'images/juan.png' %}"/>
+    
+</body>
+</html>
