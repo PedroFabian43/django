@@ -1,0 +1,22 @@
+.boton {
+    background-color: #4CAF50; /* verde */
+    color: white;
+    padding: 5px 15px; 
+    border: none;           /* quitar borde por defecto */
+    border-radius: 10px;    /* redondear esquinas */
+    cursor: pointer;        /* cambia el cursor al pasar */
+    font-size: 15px;
+}
+.boton:hover {
+    background-color: #409644;  /* color al pasar el mouse */
+}
+input {
+    font-size: 16px;          /* letra más grande */
+    padding: 8px 10px;        /* altura del input */
+    width: 250px;              /* ancho del input */
+    border-radius: 5px;        /* bordes redondeados */
+    border: 1px solid #ccc;    /* borde gris */
+    box-sizing: border-box;    /* importante para que padding no aumente ancho */
+    margin-bottom: 10px;
+}
+

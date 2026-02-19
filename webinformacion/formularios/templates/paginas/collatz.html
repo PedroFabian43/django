@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjetura de Collatz</title>
+    <style>
+        body {
+            background-color: rgb(243, 190, 199);
+        }
+        .input_1 {
+            font-size: 20px ;          
+            padding: 8px 10px ;        
+            width: 250px ;              
+            border-radius: 10px ;       
+            border: 2px solid #292929 ;   
+            box-sizing: border-box ;  
+            outline: none  ;
+            background-color: rgb(248, 246, 246);
+        }
+        .input_1:hover {
+            background-color: #c8c8c8;
+        }
+        .input_1::-webkit-outer-spin-button,
+        .input_1::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .boton {
+            background-color: #4CAF50; /* verde */
+            color: white;
+            padding: 5px 15px; 
+            border: none;           /* quitar borde por defecto */
+            border-radius: 10px;    /* redondear esquinas */
+            cursor: pointer;        /* cambia el cursor al pasar */
+            font-size: 15px;
+        }
+        .boton:hover {
+            background-color: #409644;  /* color al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Conjetura Collatz</h1>
+    <p style="font-size: 20px;">
+        La conjetura de Collatz, propuesta por Lothar Collatz en 1937. <br/>
+        Este un problema matemático no resuelto que afirma que cualquier número natural,<br/> 
+        al aplicar repetidamente la regla: "si es par, divídelo por 2; si es impar, <br/>
+        multiplícalo por 3 y suma 1", eventualmente alcanzará el número 1<br/>
+    </p>
+    <form method="post" style="font-size: 20px;">
+        {% csrf_token %}
+        Introduzca número:<br/>
+        <input type="number" name="cajanumero" class="input_1"/>
+        <button class="boton">Conjetura</button>
+    </form>
+    <ul>
+        {% for num in listanumeros %}
+            <li>
+                {{num}}
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/">Volver a Inicio</a>
+</body>
+</html>

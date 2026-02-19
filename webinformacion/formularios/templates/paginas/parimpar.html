@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinformacion</title>
+    <link rel="stylesheet"
+    href = "{% static 'css/parimpar.css' %}">
+</head>
+<body>
+    <h1>Numeros Par o Impar</h1>
+    <a href="/">Volver a index</a><br/>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="cajanum" placeholder="Número" pattern="\d*"/><br/>
+        <button class="boton">Examinar</button>
+    </form>
+    {% if numero %}
+        <h2 style="color: salmon;">El número {{datonumero}} es {{numero}} </h2>
+    {% endif %}
+</body>
+</html>
