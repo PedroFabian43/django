@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deportes</title>
+    <link rel="stylesheet" href="{% static 'css/tablas.css' %} ">
+    <style>
+        .option_1 {
+            color: rgb(19, 137, 240);
+        }
+    </style>
+</head>
+<body>
+    {% include 'paginas/menu.html' %}
+    <h1>Deportes</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Seleccione un deporte:</label><br/>
+        <select name="selectdeporte" required >
+            <option value="" disabled selected class="option_1">
+                Seleccione
+            </option>
+            {% for sport in listadeportes %}
+                <option value="{{sport}}">
+                    {{sport}}
+                </option>
+            {% endfor %}
+        </select>
+        <button class="boton2">Show</button>
+    </form>
+    {% if deporte %}
+        <h2>Su deporte favorito es {{deporte}}</h2>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,78 @@
+.tableMulti {
+    text-align: center;
+    border-collapse: collapse;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+.boton {
+    background-color: #4CAF50; /* verde */
+    color: white;
+    padding: 5px 15px; 
+    border: none;           /* quitar borde por defecto */
+    border-radius: 10px;    /* redondear esquinas */
+    cursor: pointer;        /* cambia el cursor al pasar */
+    font-size: 15px;
+    margin-left: 173px;
+}
+.boton:hover {
+    background-color: #409644;  /* color al pasar el mouse */
+}
+.boton2 {
+    background-color: #4CAF50; /* verde */
+    color: white;
+    padding: 5px 15px; 
+    border: none;           /* quitar borde por defecto */
+    border-radius: 10px;    /* redondear esquinas */
+    cursor: pointer;        /* cambia el cursor al pasar */
+    font-size: 15px;
+}
+.boton2:hover {
+    background-color: #409644;  /* color al pasar el mouse */
+}
+input {
+    font-size: 25px !important;          /* letra más grande */
+    padding: 8px 10px;        /* altura del input */
+    width: 250px;              /* ancho del input */
+    border-radius: 5px;        /* bordes redondeados */
+    border: 1px solid #ccc;    /* borde gris */
+    box-sizing: border-box;    /* importante para que padding no aumente ancho */
+    margin-bottom: 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+select {
+    font-size: 25px !important;          /* letra más grande */
+    padding: 8px 10px;        /* altura del input */
+    width: 250px;              /* ancho del input */
+    border-radius: 5px;        /* bordes redondeados */
+    border: 1px solid #ffffff;    /* borde gris */
+    box-sizing: border-box;    /* importante para que padding no aumente ancho */
+    margin-bottom: 10px;
+    outline: none;
+    box-shadow: none;
+    background-color: white;
+    -webkit-box-shadow: none;
+}
+option {
+    box-shadow: none;
+    background-color: white;
+}
+select option[disabled] {
+    color: gray;             /* color del placeholder */
+    background-color: white;  /* fondo del placeholder */
+}
+body {
+    background: linear-gradient(to right, #b3cbe0, #c8a3e2, #e0a9e4);
+}
+label {
+    font-size: 20px;
+}

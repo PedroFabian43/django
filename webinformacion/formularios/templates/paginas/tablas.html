@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Multoplicar</title>
+    <link rel="stylesheet" href="{% static 'css/tablas.css' %} ">
+</head>
+<body>
+    {% include 'paginas/menu.html' %}
+    <br>
+    <h1>Tabla de multiplicar</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Número a multiplicar:</label><br> <input type="number" name="cajanumero" required/><br/>
+        <label>Longitud de tabla:</label> <br><input type="number" name="cajamulti" required/><br/>
+        <button class="boton">Submit</button><br>
+    </form><br>
+    {% if listanumeros %}
+        <table class="tableMulti">
+            <thead>
+                <tr>
+                    <th>OPERACION</th>
+                    <th>RESULTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for num in listanumeros %}
+                    <tr>
+                        <td>{{num.operacion}} </td>
+                        <td>{{num.resultado}} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form>
+            <button class="boton" type="reset">Reset</button>
+        </form>
+    {% endif %}
+    <br>
+    <a href="/">Volver a index</a>
+</body>
+</html>

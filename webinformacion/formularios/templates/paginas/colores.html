@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colores</title>
+    <link rel="stylesheet" href="{% static 'css/tablas.css' %} ">
+</head>
+</head>
+<body>
+    {% include 'paginas/menu.html' %}
+    <h1>
+        Colores
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        <label style="font-size: 20px;">Seleccione un color:</label><br/>
+        <select name="selectcolor" required>
+            <option value="" disabled selected>Seleccione</option>
+            {% for colorSelec in listacolores %}
+                <option value="{{colorSelec.valor}}">
+                    {{colorSelec.color}}
+                </option>
+            {% endfor %}
+        </select>
+        <button class="boton2">Show</button>
+    </form>
+    {% if color %}
+    <!-- <h2 style="background-color: {{color}}">Tu color es: {{color}}</h2> -->
+        <h2 style="background-color: red">Tu color es: {{color}}</h2>
+    {% endif %}
+</body>
+</html>
