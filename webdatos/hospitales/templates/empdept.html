@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 25%;
+            border: 2px solid black
+        }
+        th {
+            background-color: rgb(196, 79, 79);
+            border: 2px solid black
+        }
+        td {
+            background-color: rgb(154, 154, 154);
+            border: 2px solid black
+        }
+    </style>
+</head>
+<body>
+    <h1>Empleados departamentos</h1>
+    <form method="post">
+        {% csrf_token %}
+        Seleccione departamento
+        <select name="cajaiddept" required>
+            <option value="" disabled selected hidden>Seleccione...</option>
+            {% for d in departamentos %}
+                <option value="{{d.id}}">{{d.id}}-{{d.nombre}}</option>
+            {% endfor %}
+        </select>
+        <button>Search</button>
+    </form>
+    {% if empleados %}
+        <table>
+            <tr>
+                <th>EMP_NO</th>
+                <th>APELLIDO</th>
+                <th>OFICIO</th>
+                <th>SALARIO</th>
+            </tr>
+
+            {% for emp in empleados %}
+                <tr>
+                    <td>{{emp.idEmpleado}}</td>
+                    <td>{{emp.apellido}}</td>
+                    <td>{{emp.oficio}}</td>
+                    <td>{{emp.salario}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salario Empleados</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 25%;
+            border: 2px solid black
+        }
+        th {
+            background-color: rgb(196, 79, 79);
+            border: 2px solid black
+        }
+        td {
+            background-color: rgb(154, 154, 154);
+            border: 2px solid black
+        }
+    </style>
+</head>
+<body>
+    <h1>Buscar empleados por salario</h1>
+    <form method="post">
+        {% csrf_token %}
+        Escriba el salario
+        <input type="number" name="cajasalario" required>
+        <button>Search</button>
+    </form>
+    {% if salarios %}
+        <table>
+            <tr>
+                <th>EMP_NO</th>
+                <th>APELLIDO</th>
+                <th>OFICIO</th>
+                <th>SALARIO</th>
+            </tr>
+
+            {% for emp in salarios %}
+                <tr>
+                    <td>{{emp.idEmpleado}}</td>
+                    <td>{{emp.apellido}}</td>
+                    <td>{{emp.oficio}}</td>
+                    <td>{{emp.salario}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

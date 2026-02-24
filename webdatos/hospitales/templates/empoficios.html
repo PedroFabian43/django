@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados Oficios</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 25%;
+            border: 2px solid black
+        }
+        th {
+            background-color: rgb(196, 79, 79);
+            border: 2px solid black
+        }
+        td {
+            background-color: rgb(154, 154, 154);
+            border: 2px solid black
+        }
+        select {
+            font-size: 18px !important;
+            width: 170px;
+            border-radius: 5px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        button {
+            background-color: #4CAF50; /* verde */
+            color: white;
+            padding: 5px 15px; 
+            border: none;           /* quitar borde por defecto */
+            border-radius: 10px;    /* redondear esquinas */
+            cursor: pointer;        /* cambia el cursor al pasar */
+            font-size: 12px;
+        }
+        button:hover {
+            background-color: #409644;  /* color al pasar el mouse */
+        }   
+    </style>
+</head>
+<body>
+    <h1>Empleados por Oficios</h1>
+    <form method="post" style="font-size: 25px;">
+        {% csrf_token %}
+        Seleccione Oficio:
+        <select name="cajaoficio" required>
+            <option value="" disabled selected>Seleccione...</option>
+            {% for emp in empleados %}
+                <option value="{{emp.oficio}}">{{emp.oficio}}</option>
+            {% endfor %}
+        </select>
+        <button>Search</button>
+    </form> <br>
+    {% if oficios %}
+        <table>
+            <tr>
+                <th>EMP_NO</th>
+                <th>APELLIDO</th>
+                <th>OFICIO</th>
+                <th>SALARIO</th>
+            </tr>
+
+            {% for emp in oficios %}
+                <tr>
+                    <td>{{emp.idEmpleado}}</td>
+                    <td>{{emp.apellido}}</td>
+                    <td>{{emp.oficio}}</td>
+                    <td>{{emp.salario}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

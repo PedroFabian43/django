@@ -1,0 +1,133 @@
+from django.shortcuts import render
+
+from hospitales import models as md
+
+# Create your views here.
+def index(request):
+    return render(request, "index.html")
+
+def tabladepartamentos(request):
+    #Creamos un servicio de departamentos
+    service = md.ServiceDepartamentos()
+    lista = service.getDepartamentos()
+    informacion = {
+        "departamentos": lista
+    }
+    return render (request, "departamentos.html", informacion)
+
+def insertarDepartamento(request):
+    if ('cajaid' in request.POST):
+        service = md.ServiceDepartamentos()
+        id = int(request.POST["cajaid"])
+        nom = request.POST["cajanombre"]
+        loc = request.POST["cajalocalidad"]
+        service.insertarDepartamento(id, nom, loc)
+        lista = service.getDepartamentos()
+        informacion = {
+            "departamentos": lista
+        }
+        return render (request, "departamentos.html", informacion)        
+    else:
+        return render(request, "insertardepartamento.html")
+
+def updateDepartamento(request):
+    if ('cajaid' in request.POST):
+        service = md.ServiceDepartamentos()
+        id = (int(request.POST["cajaid"]))
+        nom = request.POST["cajanombre"]
+        loc = request.POST["cajalocalidad"]
+        service.updateDepartamento(id, nom, loc)
+        lista = service.getDepartamentos()
+        informacion = {
+            "departamentos": lista
+        }
+        return render (request, "departamentos.html", informacion)
+    elif( 'dato' in request.GET):
+        service = md.ServiceDepartamentos()
+        id = int(request.GET["dato"])
+        #buscamos el departamento
+        dept = service.buscarDepartamento(id)
+        informacion = {
+            "departamento": dept
+        }
+        return render(request, "updatedepartamento.html", informacion)
+    else:
+        return render(request, "updatedepartamento.html")
+
+def buscarDepartamentoForm(request):
+    if ('cajaid' in request.POST):
+        service = md.ServiceDepartamentos()
+        id = int(request.POST["cajaid"])
+        dept = service.buscarDepartamento(id)
+        informacion = {
+            "departamento": dept
+        }
+        return render(request, "buscarform.html", informacion)
+    else:
+        return render(request, "buscarform.html")
+    
+def buscarDepartamentoGet(request):
+    if ('dato' in request.GET):
+        service = md.ServiceDepartamentos()
+        id = int(request.GET["dato"])
+        dept = service.buscarDepartamento(id)
+        informacion = {
+            "departamento": dept
+        }
+        return render (request, "buscarget.html", informacion)
+    else:
+        return render (request, "buscarget.html")
+    
+def delete(request):
+    if ('dato' in request.GET):
+        service = md.ServiceDepartamentos()
+        id = int(request.GET["dato"])
+        service.deleteDepartamento(id)
+        departamentos = service.getDepartamentos()
+        informacion = {
+            "departamentos":departamentos
+        }
+        return render(request, "departamentos.html", informacion)
+
+def empleadosDepartamento(request):
+    service = md.ServiceDepartamentos()
+    #Siempre recuperamos los departamentos
+    departamentos = service.getDepartamentos()
+    if('cajaiddept' in request.POST):
+        iddept = int(request.POST['cajaiddept'])
+        empleados = service.buscarEmpleadosDepartamento(iddept)
+        informacion = {
+            "empleados":empleados,
+            "departamentos":departamentos
+        }
+        return render(request, "empdept.html", informacion)
+    else:
+        informacion = {"departamentos":departamentos}
+        return render(request, "empdept.html", informacion)
+    
+def empleadosSalario(request):
+    if('cajasalario' in request.POST):
+        service = md.ServiceDepartamentos()
+        salario = int(request.POST['cajasalario'])
+        empleados = service.buscarEpleadosSalario(salario)
+        informacion = {
+            "salarios":empleados
+        }
+        return render (request, "empleadossalario.html", informacion)
+    else:
+        return render (request, "empleadossalario.html")
+    
+def empleadosOficios(request):
+    service = md.ServiceDepartamentos()
+    empleados = service.getOficioEmpleados()
+    if ('cajaoficio' in request.POST):
+        oficio = request.POST['cajaoficio']
+        trabajadores = service.buscarEmpleadosOficios(oficio)
+        informacion = {
+            "oficios":trabajadores,
+            "empleados":empleados
+        }
+        return render (request, "empoficios.html", informacion)
+    else:
+        informacion = {"empleados":empleados}
+        return render (request, "empoficios.html", informacion)
